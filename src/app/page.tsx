@@ -79,50 +79,38 @@ export default function Home() {
             <div>
               <div className="eyebrow">01 / PROJETOS</div>
               <h2>
-                Ideias em construção<span className="muted">.</span>
+                Projetos que ganham forma<span className="muted">.</span>
               </h2>
             </div>
             <p>
-              Um olhar sobre o que estamos criando.
+              Projetos publicados e ideias em desenvolvimento.
               <br />
-              Espaço para experimentar, construir e evoluir.
+              Um olhar sobre o que criamos e seguimos construindo.
             </p>
           </div>
           <div className="project-grid">
             {projects.map((project) => (
               <article key={project.slug} className="project-card">
-                <Link
-                  href={`/projetos/${project.slug}`}
-                  className="project-cover"
-                  aria-label={`Conhecer ${project.name}`}
-                >
+                <div className="project-cover">
                   <ProjectMedia project={project} />
-                  <span className="project-open">
-                    <ArrowUpRight size={23} />
-                  </span>
-                </Link>
+                </div>
                 <div className="project-info">
-                  <div>
-                    <div className="project-tags">
-                      <span>{project.category}</span>
-                      <span className="status">
-                        <span className="dot" />
-                        {project.status}
-                      </span>
-                    </div>
-                    <h3>
-                      <Link href={`/projetos/${project.slug}`}>
-                        {project.name}
-                      </Link>
-                    </h3>
-                    <p>{project.description}</p>
+                  <div className="project-tags">
+                    <span>{project.category}</span>
+                    <span className="status">
+                      <span className="dot" />
+                      {project.status}
+                    </span>
                   </div>
-                  <Link
-                    className="project-details text-link"
-                    href={`/projetos/${project.slug}`}
-                  >
-                    Conhecer o projeto <ArrowUpRight size={18} />
-                  </Link>
+                  <h3>
+                    <Link href={`/projetos/${project.slug}`} className="project-card-link">
+                      {project.name}
+                    </Link>
+                  </h3>
+                  <p>{project.description}</p>
+                  <span className="project-details">
+                    Conhecer o projeto <ArrowUpRight size={16} />
+                  </span>
                 </div>
                 <div className="project-disclaimer">
                   {project.kind} · {project.origin}

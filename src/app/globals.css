@@ -228,7 +228,13 @@ p {
 }
 .projects-section {
   background: var(--paper);
-  padding-top: 75px;
+  padding-top: 64px;
+}
+.projects-section .section-heading {
+  margin-bottom: 30px;
+}
+.projects-section .section-heading h2 {
+  font-size: clamp(30px, 3vw, 39px);
 }
 .section-heading {
   display: flex;
@@ -257,12 +263,37 @@ h2 {
 }
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 54px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dde2d8;
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  border-color: #b9c3b1;
+  box-shadow: 0 10px 25px #2935200d;
+  transform: translateY(-2px);
+}
+.project-card:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.project-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 .project-image {
   position: relative;
-  aspect-ratio: 2.05;
+  aspect-ratio: 2.53;
   background: var(--paper);
 }
 .project-image img {
@@ -280,7 +311,20 @@ h2 {
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  background: #eee5d6;
+}
+.project-cover .project-image,
+.project-cover .project-visual {
+  aspect-ratio: 2.3;
+}
+.project-cover .project-image {
+  background: #eee5d6;
+}
+.project-cover .project-image img {
+  object-fit: contain;
+}
+.project-cover .project-visual {
+  padding-inline: 34px;
 }
 .project-visual {
   position: relative;
@@ -307,7 +351,7 @@ h2 {
   transform: translateY(0) rotate(-2deg);
   transition: transform 0.5s;
 }
-.project-cover:hover .browser-mockup {
+.project-card:hover .browser-mockup {
   transform: translateY(-5px) rotate(-1deg);
 }
 .browser-bar {
@@ -455,32 +499,17 @@ h2 {
   padding: 5px 8px;
   border-radius: 2px;
 }
-.project-open {
-  position: absolute;
-  bottom: 24px;
-  right: 25px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  background: white;
-  display: grid;
-  place-items: center;
-  transition: transform 0.2s;
-}
-.project-cover:hover .project-open {
-  transform: rotate(45deg);
-}
 .project-info {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  padding-top: 25px;
+  flex: 1;
+  flex-direction: column;
+  padding: 21px 23px 19px;
 }
 .project-tags {
   display: flex;
   align-items: center;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 6px 15px;
   font-size: 10px;
   color: #6e7567;
 }
@@ -494,20 +523,36 @@ h2 {
   height: 4px;
 }
 .project-info h3 {
-  font-size: 25px;
+  font-size: 21px;
   font-weight: 500;
   letter-spacing: -0.9px;
-  margin: 11px 0 9px;
+  margin: 11px 0 7px;
 }
 .project-info p {
   font-size: 12px;
   color: #6e7567;
   line-height: 1.7;
 }
+.project-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 22px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.project-details svg {
+  transition: transform 0.2s;
+}
+.project-card:hover .project-details svg {
+  transform: translate(2px, -2px);
+}
 .project-disclaimer {
   font-size: 10px;
   color: #6e7567;
-  margin-top: 17px;
+  border-top: 1px solid #edf0e9;
+  padding: 13px 23px 15px;
 }
 .project-afterword {
   margin-top: 36px;
@@ -869,6 +914,17 @@ h2 {
   }
 }
 @media (max-width: 700px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-cover .project-image,
+  .project-cover .project-visual {
+    aspect-ratio: 1.95;
+  }
+  .project-image {
+    aspect-ratio: 1.8;
+  }
   html {
     scroll-padding-top: 80px;
   }
@@ -1012,24 +1068,16 @@ h2 {
   .mock-cars span {
     font-size: 4px;
   }
-  .project-open {
-    width: 37px;
-    height: 37px;
-    right: 13px;
-    bottom: 12px;
-  }
   .visual-footnote {
     font-size: 6px;
     left: 7px;
     bottom: 9px;
   }
   .project-info {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 19px;
+    padding: 19px 18px;
   }
   .project-info h3 {
-    font-size: 22px;
+    font-size: 20px;
   }
   .project-info p {
     font-size: 12px;
@@ -1041,6 +1089,7 @@ h2 {
   .project-disclaimer {
     font-size: 9px;
     line-height: 1.7;
+    padding-inline: 18px;
   }
   .project-afterword {
     flex-direction: column;

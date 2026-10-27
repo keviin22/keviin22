@@ -26,6 +26,7 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
+  const isConcept = project.kind === "Projeto demonstrativo";
   return (
     <main id="conteudo">
       <div className="container case-header">
@@ -68,18 +69,15 @@ export default async function ProjectPage({ params }: Props) {
             <p>{project.problem}</p>
           </section>
           <section>
-            <div className="eyebrow">02 / A PROPOSTA</div>
-            <h2>
-              Do estoque
-              <br />à descoberta.
-            </h2>
+            <div className="eyebrow">02 / {isConcept ? "A PROPOSTA" : "A SOLUÇÃO"}</div>
+            <h2>{project.solutionTitle}</h2>
             <p>{project.solution}</p>
           </section>
         </div>
         <div className="case-copy case-specs">
           <section>
-            <div className="eyebrow">03 / ESCOPO PREVISTO</div>
-            <h2>O que estamos pensando.</h2>
+            <div className="eyebrow">03 / {isConcept ? "ESCOPO PREVISTO" : "O QUE FOI ENTREGUE"}</div>
+            <h2>{isConcept ? "O que estamos pensando." : "Recursos do site."}</h2>
             <ul>
               {project.features.map((f) => (
                 <li key={f}>
@@ -91,16 +89,18 @@ export default async function ProjectPage({ params }: Props) {
           </section>
           <section>
             <div className="eyebrow">04 / TECNOLOGIA</div>
-            <h2>A base da construção.</h2>
+            <h2>{isConcept ? "A base da construção." : "Tecnologias utilizadas."}</h2>
             <div className="tech-tags">
               {project.technologies.map((t) => (
                 <span key={t}>{t}</span>
               ))}
             </div>
-            <p>
-              A arquitetura e as funcionalidades podem mudar ao longo do
-              desenvolvimento.
-            </p>
+            {isConcept && (
+              <p>
+                A arquitetura e as funcionalidades podem mudar ao longo do
+                desenvolvimento.
+              </p>
+            )}
             {project.demoUrl ? (
               <a
                 href={project.demoUrl}
@@ -108,7 +108,7 @@ export default async function ProjectPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="text-link"
               >
-                Acessar demonstração <ArrowUpRight size={17} />
+                {isConcept ? "Acessar demonstração" : "Visitar site"} <ArrowUpRight size={17} />
               </a>
             ) : (
               <p className="demo-note">

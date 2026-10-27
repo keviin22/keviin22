@@ -28,7 +28,7 @@ npm start
 - `src/components/`: componentes reutilizáveis.
 - `src/app/globals.css`: tokens, layout, responsividade e movimento reduzido.
 
-Inter é servida localmente pelo pacote Fontsource. Ícones Lucide. Mockup vetorial próprio, ilustrativo, sem fotos externas ou imagens de clientes.
+Inter é servida localmente pelo pacote Fontsource. Ícones Lucide. O projeto demonstrativo usa um mockup vetorial próprio; a capa de Santa Edwiges veio do site publicado da paróquia.
 
 ## Personalizar antes do lançamento
 
@@ -39,11 +39,11 @@ Inter é servida localmente pelo pacote Fontsource. Ícones Lucide. Mockup vetor
    - `NEXT_PUBLIC_WHATSAPP`: número com código de país e DDD, somente dígitos.
 3. Sem contatos, aparecem mensagens de indisponibilidade, sem links falsos. Com os valores definidos, aparecem links para WhatsApp e e-mail.
 4. Sem URL configurada, a indexação é bloqueada. Configure o domínio para ativar os metadados canônicos, sitemap e indexação.
-5. Substitua as informações previstas por conteúdo real quando disponível. Não há demonstração publicada nesta versão.
+5. Substitua as informações previstas do projeto Auto por conteúdo real quando disponível. O projeto Santa Edwiges já possui um link para o site publicado.
 
 ## Adicionar projetos
 
-Adicione um objeto ao array em `src/data/projects.ts`, com slug único e os campos de `Project`. A listagem e a página de detalhes são geradas automaticamente. Use `kind: "Projeto de cliente"` apenas para trabalhos reais. `origin` descreve a origem; `visualNote` identifica a mídia. `demoUrl` é opcional.
+Adicione um objeto ao array em `src/data/projects.ts`, com slug único e os campos de `Project`. A listagem e a página de detalhes são geradas automaticamente. Use `kind: "Projeto de cliente"` apenas para trabalhos reais com cliente; para projetos de uma instituição, use `"Projeto institucional"`. `origin` descreve a origem; `visualNote` identifica a mídia. `demoUrl` é opcional.
 
 Salve imagens em `public/projetos/`. Defina `cover: { src: "/projetos/capa.webp", alt: "Descrição da capa" }` e `screenshots: [{ src: "/projetos/tela.webp", alt: "Descrição da tela", caption: "Legenda" }]`. Não é necessário alterar o layout. A ausência de capa usa o mockup automotivo ilustrativo; forneça uma capa para cada novo projeto.
 
